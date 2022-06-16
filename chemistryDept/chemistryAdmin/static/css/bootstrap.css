@@ -1982,7 +1982,6 @@ legend + .control-group {
 .form-horizontal .form-actions {
   padding-left: 180px;
 }
-
 table {
   max-width: 100%;
   background-color: transparent;
@@ -1993,7 +1992,6 @@ table {
 .table {
   width: 100%;
   margin-bottom: 20px;
-}
 
 .table th,
 .table td {

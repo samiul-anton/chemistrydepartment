@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .models import research
 
 def home(request):
     return render(request, 'chemistryAdmin/index.html')
@@ -29,6 +30,12 @@ def staff(request):
 
 def student(request):
     return render(request, 'chemistryAdmin/student.html')
+
+def researchareachemistry(request):
+    context = {
+        'research': research.objects.all()
+    }
+    return render(request, 'chemistryAdmin/research-area-chemistry.html', {'data':context})
 
 def errorpage(request):
     return render(request, 'chemistryAdmin/404.html')

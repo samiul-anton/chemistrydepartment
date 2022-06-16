@@ -32,7 +32,7 @@ iframe {
 }
 
 .row {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .left {
@@ -677,6 +677,13 @@ aside {
   box-sizing: border-box;
 }
 
+aside .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 aside .widget {
   margin-bottom: 30px;
 }
@@ -707,7 +714,6 @@ aside .widget ul.cat {
 
 aside .widget ul.cat li {
   padding-left: 24px;
-  background-image: url("../img/glyphicons-halflings.png");
   background-repeat: no-repeat;
   background-position: -456px -69px;
 }
@@ -759,10 +765,14 @@ aside .widget ul.tags li a {
   margin-bottom: 10px;
 }
 
+
 #comment span {
   font-size: 11px;
   font-style: italic;
   color: #999999;
+}
+h3 .bar{
+    background-color:blue;
 }
 
 article.blog-post {
@@ -2066,4 +2076,44 @@ img.alignright {
 .adminbutton a{
   color: white;
   text-decoration: none;
+}
+.popup{
+	width: 70%;
+	background: #fff;
+	border-radius: 6px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.1);
+	text-align: center;
+	padding: 0 30px 30px;
+	color: #333;
+	visibility: hidden;
+	transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+	visibility: visible;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(1.0);
+	filter: blur(8px);
+  	-webkit-filter: blur(8px);
+}
+.popup img{
+	width: 50px;
+	margin-top: -50px;
+	border-radius: 50%;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.popup button{
+	width: 100%;
+	margin-top: 80px;
+	padding: 10px 0;
+	background: #6fd649;
+	color: #fff;
+	border: 0;
+	outline: none;
+	font-size: 18px;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }

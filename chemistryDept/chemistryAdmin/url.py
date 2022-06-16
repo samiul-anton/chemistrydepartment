@@ -12,6 +12,7 @@ urlpatterns = [
     path('faculty/', views.faculty, name='faculty'),
     path('staff/', views.staff, name='staff'),
     path('student/', views.student, name='student'),
+    path('research-area-chemistry/', views.researchareachemistry, name='research-area-chemistry'),
     path('errorpage/', views.errorpage, name='errorpage'),
     path('contactpage/', views.contactpage, name='contactpage'),
     path('AdminPanel/', views.AdminPanel, name='AdminPanel'),
