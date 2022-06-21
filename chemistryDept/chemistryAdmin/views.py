@@ -37,6 +37,15 @@ def researchareachemistry(request):
     }
     return render(request, 'chemistryAdmin/research-area-chemistry.html', {'data':context})
 
+def researchdirectionsustainability(request):
+    return render(request, 'chemistryAdmin/research-direction-sustainability.html')
+
+def seminars(request):
+    return render(request, 'chemistryAdmin/seminars.html')
+
+def labfacility(request):
+    return render(request, 'chemistryAdmin/labfacility.html')
+
 def errorpage(request):
     return render(request, 'chemistryAdmin/404.html')
 

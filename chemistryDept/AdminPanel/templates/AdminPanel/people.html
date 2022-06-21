@@ -6,145 +6,247 @@
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3">Faculty</h1>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-5">
                 <div class="card">
-                    <div class="card-body">
-                        <input type="file" accept="image/*" />
-                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Add New Faculty</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                              <label for="formFile" class="form-label">Upload Image</label>
+                              <input class="form-control" name="faculty_image" type="file" id="formFile">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Name">
+                        </div>
+                        <div class="card-body">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email" placeholder="Email">
+                        </div>
+                        <div class="card-body">
+                            <label >Designation</label>
+                            <input type="text" class="form-control" name="designation" placeholder="Designation">
+                        </div>
+                        <div class="card-body">
+                            <label>Experience</label>
+                            <input type="text" class="form-control" name="experience" placeholder="Experience">
+                        </div>
+                        <div class="card-body">
+                            <label>About</label>
+                            <textarea class="form-control" name="about" placeholder="Text Area"></textarea>
+                        </div>
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-primary btn-lg"> Submit </button>
+                        </div>
+                    </form>
                 </div>
+            </div>
+            <div class="col-12 col-lg-7">
+				<div class="card">
+					<div class="card flex-fill">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Faculties List</h5>
+						</div>
+						<table class="table table-hover my-0">
+							<thead>
+							<tr>
+								<th>Name</th>
+								<th class="d-none d-xl-table-cell">Email</th>
+								<th class="d-none d-xl-table-cell">Contact</th>
+								<th class="d-none d-xl-table-cell">Status</th>
+								<th class="d-none d-md-table-cell">Created By</th>
+								<th class="d-none d-md-table-cell">Edit/Delete</th>
+							</tr>
+							</thead>
+							<tbody>
+                            {% for p in professors %}
+                                <tr>
+                                    <td class="d-none d-xl-table-cell">{{ p.name }}</td>
+                                    <td class="d-none d-xl-table-cell">{{ p.email }}</td>
+                                    <td class="d-none d-xl-table-cell">{{ p.designation }}</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td class="d-none d-md-table-cell">Dr Dxiao</td>
+                                    <td class="d-none d-md-table-cell">edit/delete</td>
+                                </tr>
+                            {% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
             </div>
         </div>
     </div>
+    <hr>
     <!-- END Faculty -->
 
     <!-- START Staff -->
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3">Staff</h1>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-5">
                 <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Add Staff Member</h5>
+                    </div>
                     <div class="card-body">
-                        <div class="container">
-                            <form class="well form-horizontal" action=" " method="post"  id="contact_form">
-                                <fieldset>
-                                        <!-- Form Name -->
-                                    <legend><h2><b>Registration Form</b></h2></legend><br>
-                                        <!-- Text input-->
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label">First Name</label>
-                                      <div class="col-md-4 inputGroupContainer">
-                                          <div class="input-group">
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
-                                          </div>
-                                      </div>
-                                    </div>
-                                        <!-- Text input-->
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label" >Last Name</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                            <div class="input-group">
-                                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                              <input type="file" accept="image/*" />
-                                            </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Department / Office</label>
-                                        <div class="col-md-4 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                                <select name="department" class="form-control selectpicker">
-                                                  <option value="">Select your Department/Office</option>
-                                                  <option>Department of Engineering</option>
-                                                  <option>Department of Agriculture</option>
-                                                  <option >Accounting Office</option>
-                                                  <option >Tresurer's Office</option>
-                                                  <option >MPDC</option>
-                                                  <option >MCTC</option>
-                                                  <option >MCR</option>
-                                                  <option >Mayor's Office</option>
-                                                  <option >Tourism Office</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label">Username</label>
-                                      <div class="col-md-4 inputGroupContainer">
-                                        <div class="input-group">
-                                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                          <input  name="user_name" placeholder="Username" class="form-control"  type="text">
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label" >Password</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                        <div class="input-group">
-                                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                          <input name="user_password" placeholder="Password" class="form-control"  type="password">
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label" >Confirm Password</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                            <div class="input-group">
-                                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                              <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">E-Mail</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label">Contact No.</label>
-                                        <div class="col-md-4 inputGroupContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                <input name="contact_no" placeholder="(639)" class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                <!-- Select Basic -->
-
-                                <!-- Success message -->
-                                    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
-
-                                <!-- Button -->
-                                    <div class="form-group">
-                                      <label class="col-md-4 control-label"></label>
-                                      <div class="col-md-4"><br>
-                                        <button type="submit" class="btn btn-warning" >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
-                                      </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-
-                        </div><!-- /.container -->
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label">Upload Image</label>
+                          <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="card-body">
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="card-body">
+                        <label >Designation</label>
+                        <input type="text" class="form-control" placeholder="Designation">
+                    </div>
+                    <div class="card-body">
+                        <label>Experience</label>
+                        <input type="text" class="form-control" placeholder="Experience">
+                    </div>
+                    <div class="card-body">
+                        <label>About</label>
+                        <textarea class="form-control" placeholder="Text Area"></textarea>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary btn-lg"> Submit </button>
                     </div>
                 </div>
+            </div>
+            <div class="col-12 col-lg-7">
+				<div class="card">
+					<div class="card flex-fill">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Staff Member's List</h5>
+						</div>
+						<table class="table table-hover my-0">
+							<thead>
+							<tr>
+								<th>Name</th>
+								<th class="d-none d-xl-table-cell">Email</th>
+								<th class="d-none d-xl-table-cell">Contact</th>
+								<th>Status</th>
+								<th class="d-none d-md-table-cell">Created By</th>
+								<th class="d-none d-md-table-cell">Edit/Delete</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Anton, Mohammad Samiul Islam</td>
+								<td class="d-none d-xl-table-cell">samiul_anton@yahoo.com</td>
+								<td class="d-none d-xl-table-cell">475 287 3252</td>
+								<td><span class="badge bg-success">Active</span></td>
+								<td class="d-none d-md-table-cell">Dr Dxiao</td>
+								<td class="d-none d-md-table-cell">edit/delete</td>
+							</tr>
+							<tr>
+								<td>Samiul Anton</td>
+								<td class="d-none d-xl-table-cell">manto4@unh.newhaven.edu</td>
+								<td class="d-none d-xl-table-cell">203 356 2121</td>
+								<td><span class="badge bg-danger">Not Active</span></td>
+								<td class="d-none d-md-table-cell">Anton</td>
+								<td class="d-none d-md-table-cell">Edit/Delete</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
             </div>
         </div>
     </div>
     <!-- END Staff -->
 
     <!-- START Student -->
+    <div class="container-fluid p-0">
+        <h1 class="h3 mb-3">Student</h1>
+        <div class="row">
+            <div class="col-12 col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Add student</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label">Upload Image</label>
+                          <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="card-body">
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="card-body">
+                        <label >Designation</label>
+                        <input type="text" class="form-control" placeholder="Designation">
+                    </div>
+                    <div class="card-body">
+                        <label>Experience</label>
+                        <input type="text" class="form-control" placeholder="Experience">
+                    </div>
+                    <div class="card-body">
+                        <label>About</label>
+                        <textarea class="form-control" placeholder="Text Area"></textarea>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary btn-lg"> Submit </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7">
+				<div class="card">
+					<div class="card flex-fill">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Faculties List</h5>
+						</div>
+						<table class="table table-hover my-0">
+							<thead>
+							<tr>
+								<th>Name</th>
+								<th class="d-none d-xl-table-cell">Email</th>
+								<th class="d-none d-xl-table-cell">Contact</th>
+								<th>Status</th>
+								<th class="d-none d-md-table-cell">Created By</th>
+								<th class="d-none d-md-table-cell">Edit/Delete</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Anton, Mohammad Samiul Islam</td>
+								<td class="d-none d-xl-table-cell">samiul_anton@yahoo.com</td>
+								<td class="d-none d-xl-table-cell">475 287 3252</td>
+								<td><span class="badge bg-success">Active</span></td>
+								<td class="d-none d-md-table-cell">Dr Dxiao</td>
+								<td class="d-none d-md-table-cell">edit/delete</td>
+							</tr>
+							<tr>
+								<td>Samiul Anton</td>
+								<td class="d-none d-xl-table-cell">manto4@unh.newhaven.edu</td>
+								<td class="d-none d-xl-table-cell">203 356 2121</td>
+								<td><span class="badge bg-danger">Not Active</span></td>
+								<td class="d-none d-md-table-cell">Anton</td>
+								<td class="d-none d-md-table-cell">Edit/Delete</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
     <!-- END Student -->
 </main>
 {% endblock %}
